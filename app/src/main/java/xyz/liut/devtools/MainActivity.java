@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @BindView(R.id.nav_view)
     NavigationView navigationView;
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+//    @BindView(R.id.toolbar)
+//    Toolbar toolbar;
 
     private FragmentManager fm;
     private AppInfoFragment appInfoFragment;
@@ -40,13 +40,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        setSupportActionBar(toolbar);
-
-        ActionBarDrawerToggle toggle = getActionBarDrawerToggle();
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(this);
 
         appInfoFragment = new AppInfoFragment();
         devInfoFragment = new DevInfoFragment();
@@ -85,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-    private ActionBarDrawerToggle getActionBarDrawerToggle() {
+    private ActionBarDrawerToggle getActionBarDrawerToggle(Toolbar toolbar) {
         return new ActionBarDrawerToggle
                 (this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             @Override
@@ -102,4 +95,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         };
     }
 
+    public void setToolBar(Toolbar toolbar) {
+        setSupportActionBar(toolbar);
+
+        ActionBarDrawerToggle toggle = getActionBarDrawerToggle(toolbar);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(this);
+    }
 }
