@@ -1,5 +1,6 @@
 package xyz.liut.devtools;
 
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -14,6 +15,8 @@ import android.view.View;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import xyz.liut.devtools.fragment.AppInfoFragment;
+import xyz.liut.devtools.fragment.DevInfoFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -28,6 +31,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    private FragmentManager fm;
+    private AppInfoFragment appInfoFragment;
+    private DevInfoFragment devInfoFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,29 +47,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        appInfoFragment = new AppInfoFragment();
+        devInfoFragment = new DevInfoFragment();
+
+        fm = getFragmentManager();
+        fm.beginTransaction().replace(R.id.frame_layout, appInfoFragment).commit();
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        switch (item.getItemId()) {
+            case R.id.nav_app:
+                fm.beginTransaction()
+                        .replace(R.id.frame_layout, appInfoFragment).commit();
+                break;
+            case R.id.nav_dev:
+                fm.beginTransaction()
+                        .replace(R.id.frame_layout, devInfoFragment).commit();
+                break;
+            default:
+                break;
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
