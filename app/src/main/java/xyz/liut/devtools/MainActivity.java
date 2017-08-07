@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @BindView(R.id.nav_view)
     NavigationView navigationView;
 
-//    @BindView(R.id.toolbar)
-//    Toolbar toolbar;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     private FragmentManager fm;
     private AppInfoFragment appInfoFragment;
@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        setToolBar(toolbar);
 
         appInfoFragment = new AppInfoFragment();
         devInfoFragment = new DevInfoFragment();

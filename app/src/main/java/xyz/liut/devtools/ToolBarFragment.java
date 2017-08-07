@@ -22,9 +22,9 @@ public class ToolBarFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
-        MainActivity activity = (MainActivity) getActivity();
-        activity.setToolBar(toolbar);
+//        ButterKnife.bind(this, view);
+//        MainActivity activity = (MainActivity) getActivity();
+//        activity.setToolBar(toolbar);
 
     }
 }

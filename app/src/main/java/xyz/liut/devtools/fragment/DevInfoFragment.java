@@ -1,7 +1,6 @@
 package xyz.liut.devtools.fragment;
 
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -28,6 +27,6 @@ public class DevInfoFragment extends ToolBarFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        toolbar.setTitle("devInfo");
+//        toolbar.setTitle("devInfo");
     }
 }
