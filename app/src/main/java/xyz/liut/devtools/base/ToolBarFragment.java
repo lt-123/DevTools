@@ -1,6 +1,5 @@
-package xyz.liut.devtools;
+package xyz.liut.devtools.base;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
@@ -10,13 +9,14 @@ import android.util.Log;
 import android.view.View;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
+import xyz.liut.devtools.MainActivity;
+import xyz.liut.devtools.R;
 
 /**
  * 带有ToolBar的Fragment
  * Created by liut on 17-8-6.
  */
-public abstract class ToolBarFragment extends Fragment {
+public abstract class ToolBarFragment extends BaseFragment {
 
     private static final String TOOL_TAG = "ToolBarFragment";
 
@@ -29,12 +29,11 @@ public abstract class ToolBarFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
         activity = (MainActivity) getActivity();
         drawer = activity.getDrawer();
         toolbar.setTitle(getToolBarTitle());
         setToolBar(toolbar);
-
+        setHasOptionsMenu(true);
     }
 
     /**
@@ -46,7 +45,7 @@ public abstract class ToolBarFragment extends Fragment {
     public void setToolBar(Toolbar toolbar) {
         activity.setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = getActionBarDrawerToggle(toolbar);
-        drawer.addDrawerListener(toggle);
+        drawer.setDrawerListener(toggle);   //addDrawerListener 设置多个监听,导致多次调用
         toggle.syncState();
     }
 

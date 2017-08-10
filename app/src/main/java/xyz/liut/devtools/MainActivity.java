@@ -1,5 +1,6 @@
 package xyz.liut.devtools;
 
+import android.app.Fragment;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import xyz.liut.devtools.fragment.AppInfoFragment;
 import xyz.liut.devtools.fragment.DevInfoFragment;
+import xyz.liut.devtools.fragment.LittleToolsFragment;
 
 /**
  * 主界面
@@ -31,8 +33,9 @@ public class MainActivity extends AppCompatActivity implements
     NavigationView navigationView;
 
     private FragmentManager fm;
-    private AppInfoFragment appInfoFragment;
-    private DevInfoFragment devInfoFragment;
+    private Fragment appInfoFragment;
+    private Fragment devInfoFragment;
+    private Fragment littleToolsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements
 
         appInfoFragment = new AppInfoFragment();
         devInfoFragment = new DevInfoFragment();
+        littleToolsFragment = new LittleToolsFragment();
 
         fm = getFragmentManager();
         fm.beginTransaction().replace(R.id.frame_layout, appInfoFragment).commit();
@@ -59,6 +63,10 @@ public class MainActivity extends AppCompatActivity implements
             case R.id.nav_dev:
                 fm.beginTransaction()
                         .replace(R.id.frame_layout, devInfoFragment).commit();
+                break;
+            case R.id.nav_tools:
+                fm.beginTransaction()
+                        .replace(R.id.frame_layout, littleToolsFragment).commit();
                 break;
             default:
                 break;

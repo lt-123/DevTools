@@ -2,15 +2,13 @@ package xyz.liut.devtools.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
 import xyz.liut.devtools.R;
-import xyz.liut.devtools.ToolBarFragment;
+import xyz.liut.devtools.base.ToolBarFragment;
 
 /**
  * AppInfo
@@ -18,24 +16,20 @@ import xyz.liut.devtools.ToolBarFragment;
  */
 public class AppInfoFragment extends ToolBarFragment {
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        setHasOptionsMenu(true);
-        View view = inflater.inflate(R.layout.fragment_app_info, container, false);
-        return view;
+    protected String getToolBarTitle() {
+        return "AppInfo";
+    }
+
+    @Override
+    protected int getContent() {
+        return R.layout.fragment_app_info;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 //        toolbar.setTitle("appInfo");
-    }
-
-    @Override
-    protected String getToolBarTitle() {
-        return "AppInfo";
     }
 
     @Override
