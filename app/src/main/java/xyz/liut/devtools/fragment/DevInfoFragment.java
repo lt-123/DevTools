@@ -22,8 +22,8 @@ public class DevInfoFragment extends ToolBarFragment {
     TextView devInfo;
 
     @Override
-    protected String getToolBarTitle() {
-        return "DeviceInfo";
+    protected int getToolBarTitle() {
+        return R.string.device_info_fragment_title;
     }
 
     @Override

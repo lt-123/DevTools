@@ -17,10 +17,9 @@ import xyz.liut.devtools.base.ToolBarFragment;
 
 public class LittleToolsFragment extends ToolBarFragment {
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+    protected int getToolBarTitle() {
+        return R.string.little_tools_fragment_title;
     }
 
     @Override
@@ -28,8 +27,10 @@ public class LittleToolsFragment extends ToolBarFragment {
         return R.layout.fragment_little_tools;
     }
 
+    @Nullable
     @Override
-    protected String getToolBarTitle() {
-        return "LittleTools";
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
+
 }

@@ -31,7 +31,7 @@ public abstract class ToolBarFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         activity = (MainActivity) getActivity();
         drawer = activity.getDrawer();
-        toolbar.setTitle(getToolBarTitle());
+        toolbar.setTitle(getString(getToolBarTitle()));
         setToolBar(toolbar);
         setHasOptionsMenu(true);
     }
@@ -74,6 +74,6 @@ public abstract class ToolBarFragment extends BaseFragment {
     /**
      * @return 返回标题
      */
-    protected abstract String getToolBarTitle();
+    protected abstract int getToolBarTitle();
 
 }

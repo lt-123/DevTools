@@ -4,8 +4,9 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="action_settings">setting</string>
+    <string name="little_tools_fragment_title">LittleTools</string>
+    <string name="app_info_fragment_title">AppInfo</string>
+    <string name="device_info_fragment_title">DeviceInfo</string>
 
 </resources>

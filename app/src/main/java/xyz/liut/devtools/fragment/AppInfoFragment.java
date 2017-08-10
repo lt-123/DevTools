@@ -17,8 +17,8 @@ import xyz.liut.devtools.base.ToolBarFragment;
 public class AppInfoFragment extends ToolBarFragment {
 
     @Override
-    protected String getToolBarTitle() {
-        return "AppInfo";
+    protected int getToolBarTitle() {
+        return R.string.app_info_fragment_title;
     }
 
     @Override
