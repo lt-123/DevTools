@@ -7,6 +7,7 @@
     <include layout="@layout/layout_app_bar" />
 
     <TextView
+        android:id="@+id/dev_info"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/hello_blank_fragment" />

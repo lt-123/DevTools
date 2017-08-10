@@ -34,6 +34,11 @@ public class AppInfoFragment extends ToolBarFragment {
     }
 
     @Override
+    protected String getToolBarTitle() {
+        return "AppInfo";
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
         // Inflate the menu; this adds items to the action bar if it is present.

@@ -6,19 +6,21 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import xyz.liut.devtools.fragment.AppInfoFragment;
 import xyz.liut.devtools.fragment.DevInfoFragment;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+/**
+ * 主界面
+ *
+ * @author Liut
+ */
+public class MainActivity extends AppCompatActivity implements
+        NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MainActivity";
 
@@ -27,9 +29,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @BindView(R.id.nav_view)
     NavigationView navigationView;
-
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
 
     private FragmentManager fm;
     private AppInfoFragment appInfoFragment;
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        setToolBar(toolbar);
+        navigationView.setNavigationItemSelectedListener(this); //设置侧边栏的点击事件
 
         appInfoFragment = new AppInfoFragment();
         devInfoFragment = new DevInfoFragment();
@@ -79,31 +78,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-
-    private ActionBarDrawerToggle getActionBarDrawerToggle(Toolbar toolbar) {
-        return new ActionBarDrawerToggle
-                (this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                Log.d(TAG, "k");
-            }
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-                Log.d(TAG, "c");
-            }
-        };
+    /**
+     * @return 返回DrawerLayout对象，供Fragment绑定ToolBar
+     */
+    public DrawerLayout getDrawer() {
+        return drawer;
     }
 
-    public void setToolBar(Toolbar toolbar) {
-        setSupportActionBar(toolbar);
-
-        ActionBarDrawerToggle toggle = getActionBarDrawerToggle(toolbar);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        navigationView.setNavigationItemSelectedListener(this);
-    }
 }
