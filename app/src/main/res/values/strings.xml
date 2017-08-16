@@ -8,5 +8,7 @@
     <string name="little_tools_fragment_title">LittleTools</string>
     <string name="app_info_fragment_title">AppInfo</string>
     <string name="device_info_fragment_title">DeviceInfo</string>
+    <string name="accessibility_service_label">获取当前Activity</string>
+    <string name="accessibility_service_description">该服务可以获取当前的Activity，并以悬浮窗的形式显示出来。</string>
 
 </resources>
