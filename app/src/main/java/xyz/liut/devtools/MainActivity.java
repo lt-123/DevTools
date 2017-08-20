@@ -1,9 +1,9 @@
 package xyz.liut.devtools;
 
-import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         appInfoFragment = new AppInfoFragment();
         devInfoFragment = new DevInfoFragment();
 
-        fm = getFragmentManager();
+        fm = getSupportFragmentManager();
         fm.beginTransaction().replace(R.id.frame_layout, appInfoFragment).commit();
     }
 
