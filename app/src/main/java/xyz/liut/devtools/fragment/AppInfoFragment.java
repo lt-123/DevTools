@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import xyz.liut.devtools.R;
 import xyz.liut.devtools.adapter.AppPagerAdapter;
 import xyz.liut.devtools.base.ToolBarFragment;
@@ -48,8 +47,6 @@ public class AppInfoFragment extends ToolBarFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        toolbar.setTitle("appInfo");
-        ButterKnife.bind(this, view);
         viewPager.setAdapter(new AppPagerAdapter(getFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
 
