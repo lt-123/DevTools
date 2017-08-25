@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
+import com.squareup.leakcanary.LeakCanary;
 
 /**
  * 应用 Application
@@ -16,8 +17,15 @@ public class DtApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        // 安装LeakCanary
+        if (!LeakCanary.isInAnalyzerProcess(this)) {
+            LeakCanary.install(this);
+        }
+
         // 初始化 Logger
         Logger.addLogAdapter(new AndroidLogAdapter());
         Logger.i("test");
+
     }
+
 }

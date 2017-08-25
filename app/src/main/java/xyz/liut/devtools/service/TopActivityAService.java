@@ -88,6 +88,8 @@ public class TopActivityAService extends AccessibilityService {
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
 
+        if (event.getEventType() != AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) return;
+
         String pkgName = String.valueOf(event.getPackageName());
         String clsName = String.valueOf(event.getClassName());
 
