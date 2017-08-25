@@ -11,5 +11,7 @@
     <string name="accessibility_service_label">获取当前Activity</string>
     <string name="accessibility_service_description">该服务可以获取当前的Activity，并以悬浮窗的形式显示出来。</string>
     <string name="asnull">Null</string>
+    <string name="open_acc_service">打开无障碍</string>
+    <string name="open_acc_service_ok">无障碍已启动</string>
 
 </resources>
