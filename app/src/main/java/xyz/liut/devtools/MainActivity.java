@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements
         littleToolsFragment = new LittleToolsFragment();
 
         fm = getSupportFragmentManager();
-        fm.beginTransaction().replace(R.id.frame_layout, appInfoFragment).commit();
+        fm.beginTransaction().replace(R.id.frame_layout, littleToolsFragment).commit();
     }
 
     @Override

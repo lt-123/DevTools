@@ -13,5 +13,8 @@
     <string name="asnull">Null</string>
     <string name="open_acc_service">打开无障碍</string>
     <string name="open_acc_service_ok">无障碍已启动</string>
+    <string name="get_top_activity">当前Activity</string>
+    <string name="debug_mode">调试模式</string>
+    <string name="wifi_debug_mode">WIFI调试</string>
 
 </resources>

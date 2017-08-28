@@ -6,6 +6,7 @@
     <color name="floating_bg">#55000000</color>
     <color name="white">#fff</color>
     <color name="transparent">#aaa</color>
+    <color name="tv_main">#444</color>
 
 
 </resources>

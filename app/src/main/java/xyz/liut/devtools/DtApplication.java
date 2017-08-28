@@ -2,8 +2,6 @@ package xyz.liut.devtools;
 
 import android.app.Application;
 
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
 
 /**
@@ -23,8 +21,8 @@ public class DtApplication extends Application {
         }
 
         // 初始化 Logger
-        Logger.addLogAdapter(new AndroidLogAdapter());
-        Logger.i("test");
+//        Logger.addLogAdapter(new AndroidLogAdapter());
+//        Logger.i("test");
 
     }
 

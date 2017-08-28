@@ -1,11 +1,9 @@
 package xyz.liut.devtools.utils;
 
 import android.accessibilityservice.AccessibilityService;
-import android.accessibilityservice.AccessibilityServiceInfo;
 import android.content.Context;
-import android.view.accessibility.AccessibilityManager;
-
-import java.util.List;
+import android.provider.Settings;
+import android.util.Log;
 
 /**
  * Utils
@@ -14,23 +12,28 @@ import java.util.List;
  */
 public class Utils {
 
+    private static final String TAG = "Utils";
+
     /**
      * @param context
      * @return 无障碍是否已开启
      */
     public static boolean isAccessibilitySettingsOn(Context context, Class<? extends AccessibilityService> cls) {
-        AccessibilityManager accessibilityManager = (AccessibilityManager) context
-                .getSystemService(Context.ACCESSIBILITY_SERVICE);
-        List<AccessibilityServiceInfo> accessibilityServices =
-                accessibilityManager.getEnabledAccessibilityServiceList(
-                        AccessibilityServiceInfo.FEEDBACK_ALL_MASK);
-        for (AccessibilityServiceInfo info : accessibilityServices) {
-            if (info.getId().contains(cls.getName())) {
-                return true;
+        int accessibilityEnabled = 0;
+        try {
+            accessibilityEnabled = Settings.Secure.getInt(context.getContentResolver(),
+                    Settings.Secure.ACCESSIBILITY_ENABLED);
+        } catch (Settings.SettingNotFoundException e) {
+            Log.i(TAG, e.getMessage());
+        }
+        if (accessibilityEnabled == 1) {
+            String services = Settings.Secure.getString(context.getContentResolver(), Settings.Secure
+                    .ENABLED_ACCESSIBILITY_SERVICES);
+            if (services != null) {
+                return services.toLowerCase().contains(cls.getName().toLowerCase());
             }
         }
         return false;
     }
-
 
 }
