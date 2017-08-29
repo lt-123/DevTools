@@ -1,4 +1,4 @@
-package xyz.liut.devtools;
+package xyz.liut.devtools.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import xyz.liut.devtools.R;
 import xyz.liut.devtools.fragment.AppInfoFragment;
 import xyz.liut.devtools.fragment.DevInfoFragment;
 import xyz.liut.devtools.fragment.LittleToolsFragment;

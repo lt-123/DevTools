@@ -1,4 +1,4 @@
-package xyz.liut.devtools;
+package xyz.liut.devtools.application;
 
 import android.app.Application;
 

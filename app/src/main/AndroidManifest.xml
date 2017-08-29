@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
-        android:name=".DtApplication"
+        android:name=".application.DtApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,7 +15,17 @@
         android:fullBackupContent="@null"
         android:theme="@style/AppTheme.NoActionBar">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.BottomNavActivity"
+            android:label="底部导航">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

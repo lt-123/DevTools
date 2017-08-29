@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.View;
 
 import butterknife.BindView;
-import xyz.liut.devtools.MainActivity;
+import xyz.liut.devtools.activity.MainActivity;
 import xyz.liut.devtools.R;
 
 /**
