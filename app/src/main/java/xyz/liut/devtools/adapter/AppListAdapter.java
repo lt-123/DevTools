@@ -1,11 +1,18 @@
 package xyz.liut.devtools.adapter;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import java.lang.reflect.Field;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,7 +26,24 @@ import xyz.liut.devtools.R;
 
 public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.Holder> {
 
+    private static final String TAG = "AppListAdapter";
+
+    private List<ApplicationInfo> applicationInfos;
+    private List<PackageInfo> packageInfos;
+
     public AppListAdapter(Context context) {
+        initAppData(context);
+    }
+
+    private void initAppData(Context context) {
+        PackageManager pm = context.getPackageManager();
+        applicationInfos = pm.getInstalledApplications(0);
+        packageInfos = pm.getInstalledPackages(0);
+
+        Log.d(TAG, "initAppData: >> " + applicationInfos);
+        Log.d(TAG, "initAppData: >> " + packageInfos);
+
+
     }
 
     @Override
@@ -30,18 +54,52 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.Holder> 
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-//        holder.text.setText("======" + position);
+
+        StringBuilder builder2 = new StringBuilder();
+
+        try {
+            Field[] fields = PackageInfo.class.getDeclaredFields();
+            for (Field field : fields) {
+                field.setAccessible(true);
+                Log.d(TAG, "---2 >> " + field.getName() + ": " + field.get(packageInfos.get(position)));
+                builder2.append(field.getName()).append(": ").append(field.get(packageInfos.get(position))).append("\n\n");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Log.d(TAG, "----------------------------------------------------");
+
+        StringBuilder builder = new StringBuilder();
+
+        try {
+            Field[] fields = ApplicationInfo.class.getDeclaredFields();
+            for (Field field : fields) {
+                field.setAccessible(true);
+//                map.put(field.getName(), field.get(null).toString());
+
+                Log.d(TAG, "--- >> " + field.getName() + ": " + field.get(packageInfos.get(position).applicationInfo));
+
+                builder.append(field.getName()).append(": ").append(field.get(packageInfos.get(position).applicationInfo)).append("\n\n");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Log.d(TAG, "----------------------------------------------------");
+
+        holder.text.setText(builder2);
     }
 
     @Override
     public int getItemCount() {
-        return 130;
+        return packageInfos.size();
     }
 
     static class Holder extends RecyclerView.ViewHolder {
 
-//        @BindView(R.id.tv_test)
-//        TextView text;
+        @BindView(R.id.text)
+        TextView text;
 
         Holder(View itemView) {
             super(itemView);

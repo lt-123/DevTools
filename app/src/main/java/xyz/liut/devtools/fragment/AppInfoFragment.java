@@ -37,25 +37,15 @@ public class AppInfoFragment extends ToolBarFragment {
         return R.layout.fragment_app_info;
     }
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_app_info, container, false);
-    }
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         viewPager.setAdapter(new AppPagerAdapter(getFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
-
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-
-        // Inflate the menu; this adds items to the action bar if it is present.
         inflater.inflate(R.menu.main, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }

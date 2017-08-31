@@ -41,7 +41,7 @@ public class BottomNavActivity extends AppCompatActivity
         littleToolsFragment = new LittleToolsFragment();
 
         fm = getSupportFragmentManager();
-        fm.beginTransaction().replace(R.id.content, littleToolsFragment).commit();
+        fm.beginTransaction().replace(R.id.content, appInfoFragment).commit();
     }
 
     @Override

@@ -6,10 +6,16 @@
 
     <include layout="@layout/layout_app_bar" />
 
-    <TextView
-        android:id="@+id/dev_info"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="空" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/dev_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="空" />
+
+    </ScrollView>
 
 </LinearLayout>

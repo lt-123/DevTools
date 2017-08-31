@@ -1,10 +1,16 @@
 package xyz.liut.devtools.fragment;
 
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
+
+import java.util.List;
 
 import butterknife.BindView;
 import xyz.liut.devtools.R;
@@ -18,6 +24,8 @@ import xyz.liut.devtools.base.BaseFragment;
 
 public class AppListFragment extends BaseFragment {
 
+    private static final String TAG = "AppListFragment";
+
     @BindView(R.id.rv_main)
     RecyclerView recyclerView;
 
@@ -29,8 +37,10 @@ public class AppListFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(new AppListAdapter(getContext()));
     }
+
 
 }
