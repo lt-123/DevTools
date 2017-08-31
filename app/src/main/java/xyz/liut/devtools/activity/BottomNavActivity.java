@@ -49,15 +49,15 @@ public class BottomNavActivity extends AppCompatActivity
         switch (item.getItemId()) {
             case R.id.navigation_home:
                 fm.beginTransaction()
-                        .replace(R.id.frame_layout, appInfoFragment).commit();
+                        .replace(R.id.content, appInfoFragment).commit();
                 return true;
             case R.id.navigation_dashboard:
                 fm.beginTransaction()
-                        .replace(R.id.frame_layout, devInfoFragment).commit();
+                        .replace(R.id.content, devInfoFragment).commit();
                 return true;
             case R.id.navigation_notifications:
                 fm.beginTransaction()
-                        .replace(R.id.frame_layout, littleToolsFragment).commit();
+                        .replace(R.id.content, littleToolsFragment).commit();
                 return true;
         }
         return false;

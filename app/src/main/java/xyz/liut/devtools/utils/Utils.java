@@ -1,9 +1,13 @@
 package xyz.liut.devtools.utils;
 
 import android.accessibilityservice.AccessibilityService;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.provider.Settings;
 import android.util.Log;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Utils
@@ -36,4 +40,8 @@ public class Utils {
         return false;
     }
 
+    @SuppressLint("SimpleDateFormat")
+    public static String DateToString(Date date) {
+        return new SimpleDateFormat("MM-dd hh-mm-ss").format(date);
+    }
 }

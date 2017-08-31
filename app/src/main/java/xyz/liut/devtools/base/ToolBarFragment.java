@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
 import butterknife.BindView;
-import xyz.liut.devtools.activity.MainActivity;
 import xyz.liut.devtools.R;
 
 /**
@@ -23,14 +23,14 @@ public abstract class ToolBarFragment extends BaseFragment {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    private MainActivity activity;
+    private AppCompatActivity activity;
     private DrawerLayout drawer;    //来自Activity
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        activity = (MainActivity) getActivity();
-        drawer = activity.getDrawer();
+        activity = (AppCompatActivity) getActivity();
+//        drawer = activity.getDrawer();
         toolbar.setTitle(getString(getToolBarTitle()));
         setToolBar(toolbar);
         setHasOptionsMenu(true);
@@ -44,9 +44,9 @@ public abstract class ToolBarFragment extends BaseFragment {
      */
     public void setToolBar(Toolbar toolbar) {
         activity.setSupportActionBar(toolbar);
-        ActionBarDrawerToggle toggle = getActionBarDrawerToggle(toolbar);
-        drawer.setDrawerListener(toggle);   //addDrawerListener 设置多个监听,导致多次调用
-        toggle.syncState();
+//        ActionBarDrawerToggle toggle = getActionBarDrawerToggle(toolbar);
+//        drawer.setDrawerListener(toggle);   //addDrawerListener 设置多个监听,导致多次调用
+//        toggle.syncState();
     }
 
     /**

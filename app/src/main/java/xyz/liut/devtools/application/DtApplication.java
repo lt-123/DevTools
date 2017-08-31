@@ -20,6 +20,8 @@ public class DtApplication extends Application {
             LeakCanary.install(this);
         }
 
+        CrashHandler.getInstance().init(this);
+
         // 初始化 Logger
 //        Logger.addLogAdapter(new AndroidLogAdapter());
 //        Logger.i("test");
