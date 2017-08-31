@@ -1,17 +1,14 @@
 package xyz.liut.devtools.adapter;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.lang.reflect.Field;
 import java.util.List;
 
 import butterknife.BindView;
@@ -28,22 +25,20 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.Holder> 
 
     private static final String TAG = "AppListAdapter";
 
-    private List<ApplicationInfo> applicationInfos;
+    public static final int APP_USER = 0;
+    public static final int APP_SYSTEM = 1;
+
+    private final Context context;
     private List<PackageInfo> packageInfos;
 
-    public AppListAdapter(Context context) {
-        initAppData(context);
-    }
-
-    private void initAppData(Context context) {
-        PackageManager pm = context.getPackageManager();
-        applicationInfos = pm.getInstalledApplications(0);
-        packageInfos = pm.getInstalledPackages(0);
-
-        Log.d(TAG, "initAppData: >> " + applicationInfos);
-        Log.d(TAG, "initAppData: >> " + packageInfos);
-
-
+    /**
+     * @param context
+     * @param packageInfos
+     * @param type         {@link #APP_USER} or {@link #APP_SYSTEM}
+     */
+    public AppListAdapter(Context context, List<PackageInfo> packageInfos, int type) {
+        this.context = context;
+        this.packageInfos = packageInfos;
     }
 
     @Override
@@ -54,41 +49,12 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.Holder> 
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-
-        StringBuilder builder2 = new StringBuilder();
-
-        try {
-            Field[] fields = PackageInfo.class.getDeclaredFields();
-            for (Field field : fields) {
-                field.setAccessible(true);
-                Log.d(TAG, "---2 >> " + field.getName() + ": " + field.get(packageInfos.get(position)));
-                builder2.append(field.getName()).append(": ").append(field.get(packageInfos.get(position))).append("\n\n");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        Log.d(TAG, "----------------------------------------------------");
-
-        StringBuilder builder = new StringBuilder();
-
-        try {
-            Field[] fields = ApplicationInfo.class.getDeclaredFields();
-            for (Field field : fields) {
-                field.setAccessible(true);
-//                map.put(field.getName(), field.get(null).toString());
-
-                Log.d(TAG, "--- >> " + field.getName() + ": " + field.get(packageInfos.get(position).applicationInfo));
-
-                builder.append(field.getName()).append(": ").append(field.get(packageInfos.get(position).applicationInfo)).append("\n\n");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        Log.d(TAG, "----------------------------------------------------");
-
-        holder.text.setText(builder2);
+        PackageInfo info = packageInfos.get(position);
+        holder.imgIcon.setImageDrawable(info.applicationInfo.loadIcon(context.getPackageManager()));
+        String title = info.applicationInfo.loadLabel(context.getPackageManager())
+                + " [" + info.packageName + "]";
+        holder.tvAppTitle.setText(title);
+        holder.tvVersion.setText(info.versionName + " [" + info.versionCode + "]");
     }
 
     @Override
@@ -97,10 +63,14 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.Holder> 
     }
 
     static class Holder extends RecyclerView.ViewHolder {
-
+        @BindView(R.id.img_icon)
+        ImageView imgIcon;
+        @BindView(R.id.tv_app_title)
+        TextView tvAppTitle;
+        @BindView(R.id.tv_version)
+        TextView tvVersion;
         @BindView(R.id.text)
         TextView text;
-
         Holder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

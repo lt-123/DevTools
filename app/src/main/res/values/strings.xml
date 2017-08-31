@@ -19,5 +19,7 @@
     <string name="title_app">app</string>
     <string name="title_device">devices</string>
     <string name="title_others">others</string>
+    <string name="app_icon">app icon</string>
+    <string name="version_string">version:</string>
 
 </resources>
