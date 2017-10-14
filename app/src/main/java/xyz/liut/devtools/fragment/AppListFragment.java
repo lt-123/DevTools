@@ -38,8 +38,10 @@ public class AppListFragment extends BaseFragment implements Runnable {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        recyclerView.setAdapter(new AppListAdapter(getContext()));
-        new Thread(new AppListFragment()).start();
+//        new Thread(new AppListFragment()).start();
+        PackageManager pm = getContext().getPackageManager();
+        packageInfos = pm.getInstalledPackages(0);
+        recyclerView.setAdapter(new AppListAdapter(getContext(), packageInfos, AppListAdapter.APP_USER));
     }
 
     @Override

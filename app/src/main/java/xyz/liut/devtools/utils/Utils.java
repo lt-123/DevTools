@@ -42,6 +42,6 @@ public class Utils {
 
     @SuppressLint("SimpleDateFormat")
     public static String DateToString(Date date) {
-        return new SimpleDateFormat("MM-dd hh-mm-ss").format(date);
+        return new SimpleDateFormat("MM-ddhh-mm-ss").format(date);
     }
 }

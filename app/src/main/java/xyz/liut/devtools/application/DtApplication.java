@@ -2,7 +2,7 @@ package xyz.liut.devtools.application;
 
 import android.app.Application;
 
-import com.squareup.leakcanary.LeakCanary;
+//import com.squareup.leakcanary.LeakCanary;
 
 /**
  * 应用 Application
@@ -16,11 +16,11 @@ public class DtApplication extends Application {
         super.onCreate();
 
         // 安装LeakCanary
-        if (!LeakCanary.isInAnalyzerProcess(this)) {
-            LeakCanary.install(this);
-        }
+//        if (!LeakCanary.isInAnalyzerProcess(this)) {
+//            LeakCanary.install(this);
+//        }
 
-        CrashHandler.getInstance().init(this);
+//        CrashHandler.getInstance().init(this);
 
         // 初始化 Logger
 //        Logger.addLogAdapter(new AndroidLogAdapter());

@@ -21,5 +21,7 @@
     <string name="title_others">others</string>
     <string name="app_icon">app icon</string>
     <string name="version_string">version:</string>
+    <string name="description_welcome">Desc...</string>
+    <string name="title_welcome">Hello</string>
 
 </resources>

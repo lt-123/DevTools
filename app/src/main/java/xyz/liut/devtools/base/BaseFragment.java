@@ -1,5 +1,6 @@
 package xyz.liut.devtools.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,13 @@ import butterknife.Unbinder;
 public abstract class BaseFragment extends Fragment {
 
     private Unbinder unbinder;
+    protected Context context;
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
 
     @Nullable
     @Override
@@ -41,6 +49,7 @@ public abstract class BaseFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+        this.context = null;
     }
 
 }
